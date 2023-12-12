@@ -1,0 +1,34 @@
+<div
+  class="container d-flex flex-column justify-content-center align-items-center"
+>
+  @if (character.id > 0) {
+  <div class="row text-center mt-5">
+    <h1>{{ character.name }}</h1>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center">
+    <img src="{{ character.image }}" alt="" class="img-fluid" />
+  </div>
+  <dl class="row mt-3">
+    <dt class="col-6 text-end">Estado:</dt>
+    <dd class="col-6">{{ character.status }}</dd>
+
+    <dt class="col-6 text-end">Especie:</dt>
+    <dd class="col-6">{{ character.species }}</dd>
+
+    <dt class="col-6 text-end">Localización:</dt>
+    @if(character.origin ==="unknown"){
+    <dd class="col-6">Desconocida</dd>
+    }@else{
+    <dd class="col-6">{{ character.origin }}</dd>
+    }
+    <dt class="col-6 text-end"><a [routerLink]="['/characters/edit/',character.id]" class="btn btn-warning">Editar</a></dt>
+    <dd class="col-6"><button class="btn btn-danger" (click)="deleteCharacter(character.id)">Eliminar</button></dd>
+  </dl>
+  } @else {
+    {{ espera }}
+  }
+</div>
+
+<ng-template #espera>
+  <div id="spinner"></div>
+</ng-template>

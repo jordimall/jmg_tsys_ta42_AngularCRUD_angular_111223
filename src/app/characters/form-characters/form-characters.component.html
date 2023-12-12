@@ -1,0 +1,61 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-6 border border-dark-subtle mt-3 bg-white">
+    <form [formGroup]="characterForm" (ngSubmit)="findOut()">
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="name" />
+        @if (characterForm.get('name')?.hasError('required')&&
+        characterForm.get('name')?.touched) {
+        <span class="text-danger">Introduzca el nombre del personaje</span>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Estado</label>
+        <select class="form-select" formControlName="status">
+          <option [value]="'Alive'">Alive</option>
+          <option [value]="'Dead'">Dead</option>
+          <option [value]="'Unknown'">Unknown</option>
+        </select>
+        @if (characterForm.get('status')?.hasError('required') &&
+        characterForm.get('status')?.touched) {
+        <span class="text-danger">Introduzca el estado de el personaje</span>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Especie</label>
+        <input type="text" class="form-control" formControlName="species" />
+        @if (characterForm.get('species')?.hasError('required') &&
+        characterForm.get('species')?.touched) {
+        <span class="text-danger">
+          Introduzca a que especie pertenece personaje
+        </span>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Genero</label>
+        <input type="text" class="form-control" formControlName="gender" />
+        @if (characterForm.get('gender')?.hasError('required') &&
+        characterForm.get('gender')?.touched) {
+        <span class="text-danger">
+          Introduzca a que genero pertenece personaje
+        </span>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Origen</label>
+        <input type="text" class="form-control" formControlName="origin" />
+        @if (characterForm.get('origin')?.hasError('required') &&
+        characterForm.get('origin')?.touched) {
+        <span class="text-danger">Introduzca donde nació el personaje</span>
+        }
+      </div>
+      <button
+        [disabled]="!characterForm.valid"
+        type="submit"
+        class="btn btn-primary mb-2"
+      >
+        @if (validation) { Guardar }@else {Editar}
+      </button>
+    </form>
+  </div>
+</div>
