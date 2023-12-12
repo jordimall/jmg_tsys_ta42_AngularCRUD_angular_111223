@@ -26,8 +26,7 @@ export class FormCharactersComponent implements OnInit {
     species: '',
     gender: '',
     origin: '',
-    image:
-      'https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/series-television/11-cosas-que-no-sabias-de-rick-y-morty/137666502-1-esl-ES/11-cosas-que-no-sabias-de-Rick-y-Morty.jpg?crop=1xw:0.75xh;center,top&resize=1200:*',
+    image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
   };
   characterForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -55,7 +54,7 @@ export class FormCharactersComponent implements OnInit {
             gender: data.gender,
             origin: data.origin,
           });
-          this.character.image = data.image;
+          this.character = data;
         },
         (error) => {
           alert(error);
