@@ -1,0 +1,29 @@
+<div class="row me-2 ms-2">
+  @if (characters.length>0) {
+  <div class="row mt-2 ms-2 d-flex">
+    <div class="col-2">
+      <a [routerLink]="['./new']" class="btn btn-primary">Añadir personaje</a>
+    </div>
+  </div>
+
+  @for (character of characters; track $index) {
+  <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+    <div class="card">
+      <img src="{{ character.image }}" class="card-img-top" />
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title flex-grow-1">{{ character.name }}</h5>
+        <div class="mt-auto">
+          <a
+            [routerLink]="['/characters/show', character.id]"
+            class="btn btn-warning card-button"
+          >
+            See more
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  }} @else {
+  <div id="spinner"></div>
+  }
+</div>
