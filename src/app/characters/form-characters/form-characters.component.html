@@ -1,5 +1,8 @@
-<div class="row d-flex justify-content-center">
-  <div class="col-6 border border-dark-subtle mt-3 bg-white">
+<div class="row d-flex flex-column justify-content-center align-items-center h-75vh">
+  <div class="col-6 text-center">
+    <h1>@if (validation) { Crear un nuevo personaje }@else {Editar a {{characterForm.value.name}}}</h1>
+  </div>
+  <div class="col-6 border border-dark-subtle bg-white mt-2">
     <form [formGroup]="characterForm" (ngSubmit)="findOut()">
       <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
@@ -12,9 +15,9 @@
       <div class="mb-3">
         <label for="" class="form-label">Estado</label>
         <select class="form-select" formControlName="status">
+          <option [value]="'Unknown'">Unknown</option>
           <option [value]="'Alive'">Alive</option>
           <option [value]="'Dead'">Dead</option>
-          <option [value]="'Unknown'">Unknown</option>
         </select>
         @if (characterForm.get('status')?.hasError('required') &&
         characterForm.get('status')?.touched) {

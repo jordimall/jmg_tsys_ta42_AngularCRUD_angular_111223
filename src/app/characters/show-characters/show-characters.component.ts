@@ -46,7 +46,7 @@ export class ShowCharactersComponent implements OnInit {
     this.fakeDataService.deletData(id).subscribe(
       (data: any): void => {
         alert('Elemento borrado correctamente');
-        this.router.navigate([`./characters`]);
+        this.router.navigate([`./characters/all`]);
       },
       (error: any): void => {
         alert(error.message);
